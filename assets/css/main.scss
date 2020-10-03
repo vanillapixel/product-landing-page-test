@@ -1,4 +1,6 @@
 $theme-color: #405cf5;
+$theme-color-lighter: #4d69fa;
+$theme-color-dark: #3450f1;
 
 * {
   padding: 0;
@@ -13,36 +15,58 @@ html {
 .small-text {
   font-size: 2rem;
 }
+body {
+  background: $theme-color;
+}
+img {
+  width: 100%;
+}
+.action-btn {
+  font-family: "Poppins";
+  padding: 1.1rem 4.5rem;
+  border-radius: 50px;
+  outline: none;
+  font-size: 2.6rem;
+  color: $theme-color-lighter;
+  font-weight: 500;
+  background: white;
+  border: none;
+}
+.contact-btn {
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: white;
+  border: 1px solid white;
+  background: transparent;
+}
 .main-container {
-  background-color: $theme-color;
   .navbar {
     position: fixed;
     top: 0;
-    height: 50px;
     z-index: 9999;
     width: 100%;
     color: white;
-    margin: 5rem;
+    padding: 4rem 10rem;
     .nav-wrapper {
       display: flex;
       flex-direction: row;
-      height: 100%;
-      width: 100%;
       justify-content: space-between;
       .logo {
         font-size: 30px;
-        padding: 20px;
       }
       .nav-tabs {
         display: flex;
         flex-direction: row;
-        width: 40%;
         justify-content: space-between;
         align-items: center;
         padding: 0 30px;
         list-style-type: none;
-        .nav-tab {
-        }
+      }
+      .nav-tab {
+        font-size: 1.6rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        padding: 1.4rem 3.5rem;
       }
       .nav-action-wrapper {
         display: flex;
@@ -50,7 +74,132 @@ html {
     }
   }
   .home-section {
-    height: 100vh;
+    height: calc(100vh - 10rem);
     width: 100%;
+    margin-top: 100px;
+    .floating-object {
+      position: absolute;
+    }
+    .net-object {
+      left: -15rem;
+      top: 10%;
+      width: 30rem;
+    }
+    .content-container {
+      width: 70%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+      .tube-object {
+        &:nth-child(1) {
+          left: -12%;
+          bottom: 40px;
+          width: 12rem;
+          transform: rotate(-30deg);
+          animation: 10s tubeRotation infinite;
+        }
+        &:nth-child(2) {
+          right: -12%;
+          bottom: 32%;
+          width: 16rem;
+          animation: 10s tubeFloat infinite;
+        }
+      }
+      .ball-object {
+        width: 2.5rem;
+        left: 1.5%;
+        top: 20%;
+        z-index: 2;
+        animation: 10s bounce infinite;
+        img {
+          width: 100%;
+        }
+      }
+      .content-wrapper {
+        justify-content: center;
+        align-items: center;
+        color: white;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+      }
+      .text-content {
+        width: 60%;
+        text-align: center;
+        margin: auto;
+        font-size: 3.2rem;
+        .title {
+          font-weight: 600;
+          line-height: 1.2;
+        }
+        .title,
+        .subtitle {
+          font-weight: 500;
+          margin: 40px 0;
+        }
+        .subtitle {
+          font-size: 2rem;
+          font-weight: 300;
+        }
+      }
+      .home-picture {
+        width: 35%;
+        &:after {
+          width: 56%;
+          height: 58px;
+          filter: blur(40px);
+          content: "";
+          position: absolute;
+          bottom: -79px;
+          left: 39%;
+          background: #0e0e0e70;
+          animation: 10s skaterSwing infinite;
+        }
+        img {
+          animation: 10s skaterSwing infinite;
+          width: 100%;
+          filter: drop-shadow(2px 4px 9px #3332a3);
+        }
+      }
+    }
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: scale(1.08) translateY(50px);
+  }
+  50% {
+    transform: translateY(0px);
+  }
+}
+@keyframes skaterSwing {
+  0%,
+  100% {
+    transform: skew(0deg, -1deg);
+  }
+  50% {
+    transform: skew(0deg, 3deg);
+  }
+}
+@keyframes tubeFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(30px);
+  }
+}
+@keyframes tubeRotation {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(5deg);
   }
 }
